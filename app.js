@@ -1,4 +1,5 @@
 
+
 //this makes sure that the html has loaded before using jQuery
 $(document).ready(function () {
     //button is disabled until something is imputed
@@ -14,20 +15,35 @@ $(document).ready(function () {
     });
 
     $('body').append('<ul id="container"></ul>')
-    
+   
     
     $('#btnSubmit').click(function () {
         var boxTxt =$('#boxTxt').val();
-        $('#container').append(`<li id="items"><h2 class="txtSize">${boxTxt}</h2></li>`);
-        $("#myForm").trigger("reset");
-        
-        
+        $('#container').append(`<li class="items"><h2 class="txtSize">${boxTxt}</h2></li>`);
+        $("#myForm").trigger("reset"); 
+   
+        $('.txtSize').on('mouseover',function() {
+            const rndCol = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
+            $(this).css({'background': rndCol, 'border-radius': '25px'});      
+          });
+
+          $('.items').on('dblclick', function() {
+            $(this).remove();
+        });
+      
     });
-  
+
+
+
+
+    function random(num) {
+        return Math.floor(Math.random() * (num + 1));
+    };
+    
 });
 
-/*
 
+/*
 
     $('body').append('<div id="div4Txt"></div>').append('<ul id="container"></ul>').append('<li id="items"></li>').append(('<h2 class="txtSize"></h2>'));
 
